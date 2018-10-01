@@ -482,7 +482,6 @@ class Form2 extends React.Component {
               color="primary"
               className={classes.button}
               onClick={e => this.handleFormSubmit(e)}
-              className="btn btn-primary btn-sm m-2"
             >
               Submit
             </Button>

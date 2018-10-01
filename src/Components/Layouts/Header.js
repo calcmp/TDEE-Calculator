@@ -1,5 +1,4 @@
 import React from "react";
-import List from "@material-ui/core/List";
 import { Link } from "react-router-dom";
 import {
   Drawer,
@@ -12,8 +11,7 @@ import {
   Divider,
   MenuItem,
   MenuList,
-  withStyles,
-  Grid
+  withStyles
 } from "@material-ui/core";
 import MenuIcon from "@material-ui/icons/Menu";
 
@@ -30,10 +28,7 @@ const styles = theme => ({
   },
   appBar: {
     zIndex: theme.zIndex.drawer + 1,
-    marginLeft: drawerWidth,
-    [theme.breakpoints.up("md")]: {
-      width: "calc(100% - %${drawerWidth}px)"
-    }
+    marginLeft: drawerWidth
   },
   navIconHide: {
     [theme.breakpoints.up("md")]: {
