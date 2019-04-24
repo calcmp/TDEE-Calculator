@@ -275,6 +275,21 @@ class Form2 extends React.Component {
     data[8].value = this.state.data[5].value / 4;
     data[9].value = this.state.data[6].value / 9;
     this.setState({ data });
+
+    console.log("Weight: ", this.state.input[0].value);
+    console.log("BF: ", this.state.input[2].value);
+
+    console.log("tempWeight: ", this.state.data[3].value);
+
+    console.log("BMR Male: ", this.state.data[0].value);
+
+    console.log("TDEE: ", this.state.data[2].value);
+    console.log("Surplus: ", this.state.data[3].value);
+    console.log("Macro1: ", this.state.data[7].value);
+    console.log("Macro2: ", this.state.data[8].value);
+    console.log("Macro3: ", this.state.data[9].value);
+
+    console.log("LBM: ", this.state.data[1].value);
   }
 
   //render surplus defecit method
