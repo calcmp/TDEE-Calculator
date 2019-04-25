@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
@@ -66,3 +67,9 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/de
 ### `npm run build` fails to minify
 
 This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+=======
+﻿## TDEE Calculator
+This app has two formulas which can be used to calculate your TDEE, caloric surplus/defecit amount and a nutrition guide based on a chosen diet.
+
+This app uses material-ui and bootsrap.
+>>>>>>> 6c6f0a3350c96fba8016ea5aab7353e86f7ee06e
