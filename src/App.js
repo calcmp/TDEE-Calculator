@@ -1,15 +1,14 @@
 import React, { Component } from "react";
 import { BrowserRouter, Route } from "react-router-dom";
 
-import MainForm from "./Components/Forms/MainForm";
-//import Info from "./Components/Pages/Info";
+import Form from "./Components/Forms/Form";
 
 class App extends Component {
   render() {
     return (
       <BrowserRouter>
-        <Route path="/" exact component={MainForm} />
-        <Route path="/MainForm" exact component={MainForm} />
+        <Route path="/" exact component={Form} />
+        <Route path="/Form" exact component={Form} />
       </BrowserRouter>
     );
   }
