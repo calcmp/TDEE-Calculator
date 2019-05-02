@@ -8,68 +8,43 @@ library.add(faWeight);
 
 const Weight = ({ unit, weight, setWeight }) => {
   return (
-    <div>
-      {unit === "metric" ? (
-        <div className="w-full py-2 pr-2">
-          <div
-            style={{ backgroundColor: "hsl(0, 0%, 97%)" }}
-            className="flex w-full my-px text-grey-dark rounded"
-          >
-            <div className="flex py-3 px-4 mt-px">
-              <FontAwesomeIcon
-                style={{ color: "hsl(122, 42%, 75%)" }}
-                icon="weight"
-              />
-            </div>
-            <div
-              style={{ backgroundColor: "hsl(0, 0%, 88%)" }}
-              className="border"
-            />
-            <input
-              style={{
-                color: "hsl(0, 0%, 49%)",
-                backgroundColor: "hsl(0, 0%, 97%)"
-              }}
-              className="appearance-none font-sans font-medium block w-full border border-grey-lighter rounded py-2 px-4 leading-tight focus:outline-none"
-              id="weight"
-              type="number"
-              placeholder="Weight (Kg)..."
-              value={weight}
-              onChange={e => setWeight(e.target.value)}
-            />
-          </div>
-        </div>
-      ) : (
-        <div className="w-full py-2 pr-2">
-          <div
-            style={{ backgroundColor: "hsl(0, 0%, 97%)" }}
-            className="flex w-full text-grey-dark rounded"
-          >
-            <div className="flex py-3 px-4 mt-px">
-              <FontAwesomeIcon
-                style={{ color: "hsl(122, 42%, 75%)" }}
-                icon="weight"
-              />
-            </div>
-            <div
-              style={{ backgroundColor: "hsl(0, 0%, 88%)" }}
-              className="border"
-            />
-            <input
-              style={{
-                color: "hsl(0, 0%, 49%)",
-                backgroundColor: "hsl(0, 0%, 97%)"
-              }}
-              className="appearance-none font-sans font-medium block w-full border border-grey-lighter rounded py-2 px-4 leading-tight focus:outline-none"
-              id="weight"
-              type="number"
-              placeholder="Weight (lb)..."
-              value={weight}
-              onChange={e => setWeight(e.target.value)}
-            />
-          </div>
-        </div>
-      )}
+    <div className="w-full py-2 pr-2">
+      <div className="flex flex-row">
+        <span
+          style={{ backgroundColor: "hsl(0, 0%, 97%)" }}
+          className="flex items-center rounded rounded-r-none pr-2 pl-5"
+        >
+          <FontAwesomeIcon
+            style={{ color: "hsl(122, 42%, 75%)" }}
+            icon="weight"
+          />
+        </span>
+        {unit === "metric" ? (
+          <input
+            style={{
+              color: "hsl(0, 0%, 49%)",
+              backgroundColor: "hsl(0, 0%, 97%)"
+            }}
+            type="number"
+            placeholder="Weight (Kg)..."
+            value={weight}
+            onChange={e => setWeight(e.target.value)}
+            className="w-full py-3 pl-5 pr-3 font-sans rounded rounded-l-none font-bold focus:outline-none"
+          />
+        ) : (
+          <input
+            style={{
+              color: "hsl(0, 0%, 49%)",
+              backgroundColor: "hsl(0, 0%, 97%)"
+            }}
+            type="number"
+            placeholder="Weight (lb)..."
+            value={weight}
+            onChange={e => setWeight(e.target.value)}
+            className="w-full py-3 pl-5 pr-3 font-sans rounded rounded-l-none font-bold focus:outline-none"
+          />
+        )}
+      </div>
     </div>
   );
 };

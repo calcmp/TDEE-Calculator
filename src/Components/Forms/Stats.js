@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 
 import Weight from "../Stats/Inputs/Weight";
 import Height from "../Stats/Inputs/Height";
@@ -9,23 +9,31 @@ import Activity from "../Stats/Selects/Activity";
 import Diet from "../Stats/Selects/Diet";
 import Button from "../Button/Button";
 
-import Calculate from "../Calculate/Calculate";
-
-const Stats = ({ formula, gender, unit, weightGoal }) => {
-  const [weight, setWeight] = useState("");
-  const [imperialWeight, setImperialWeight] = useState(null);
-  const [height, setHeight] = useState("");
-  const [inches, setInches] = useState("");
-  const [feet, setFeet] = useState("");
-  const [age, setAge] = useState("");
-  const [bodyFat, setBodyFat] = useState("");
-
-  const [weightPlan, setWeightPlan] = useState(0.1);
-  const [activityLevel, setActivityLevel] = useState(1.1);
-  const [macro, setMacro] = useState("1");
-
-  const [showResults, setShowResults] = useState(false);
-
+const Stats = ({
+  weight,
+  setWeight,
+  setImperialWeight,
+  height,
+  setHeight,
+  inches,
+  setInches,
+  feet,
+  setFeet,
+  age,
+  setAge,
+  bodyFat,
+  setBodyFat,
+  weightPlan,
+  setWeightPlan,
+  activityLevel,
+  setActivityLevel,
+  macro,
+  setMacro,
+  setShowResults,
+  formula,
+  unit,
+  weightGoal
+}) => {
   const handleActivityLevelChange = event => {
     setActivityLevel(event.target.value);
   };
@@ -49,8 +57,12 @@ const Stats = ({ formula, gender, unit, weightGoal }) => {
       tempHeight *= 2.54;
       setHeight(tempHeight);
     }
-    console.log("clicked");
-    setShowResults(true);
+    // Check if stats have been entered
+    if (formula === false && weight !== "" && height !== "" && age !== "")
+      setShowResults(true);
+    else if (formula === true && weight !== "" && bodyFat !== "")
+      setShowResults(true);
+    else alert("Please enter your weight, height and age.");
   };
 
   return (
@@ -122,20 +134,6 @@ const Stats = ({ formula, gender, unit, weightGoal }) => {
         handleClick={() => handleClick()}
         title={"Calculate TDEE"}
       />
-      {showResults && (
-        <Calculate
-          formula={formula}
-          gender={gender}
-          weight={imperialWeight || weight}
-          height={height}
-          age={age}
-          bodyFat={bodyFat}
-          activityLevel={activityLevel}
-          weightGoal={weightGoal}
-          weightPlan={weightPlan}
-          macro={macro}
-        />
-      )}
     </div>
   );
 };

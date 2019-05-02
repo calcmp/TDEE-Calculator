@@ -22,31 +22,26 @@ const Height = ({
     <div>
       {unit === "metric" ? (
         <div className="w-full py-2 pr-2">
-          <div
-            style={{ backgroundColor: "hsl(0, 0%, 97%)" }}
-            className="flex w-full text-grey-dark rounded"
-          >
-            <div className="flex py-3 px-4 mx-1 mt-px">
+          <div className="flex flex-row">
+            <span
+              style={{ backgroundColor: "hsl(0, 0%, 97%)" }}
+              className="flex items-center rounded rounded-r-none pr-3 pl-6"
+            >
               <FontAwesomeIcon
                 style={{ color: "hsl(122, 42%, 75%)" }}
                 icon="ruler-vertical"
               />
-            </div>
-            <div
-              style={{ backgroundColor: "hsl(0, 0%, 88%)" }}
-              className="border"
-            />
+            </span>
             <input
               style={{
                 color: "hsl(0, 0%, 49%)",
                 backgroundColor: "hsl(0, 0%, 97%)"
               }}
-              className="appearance-none font-sans font-medium block w-full border border-grey-lighter rounded py-2 px-4 leading-tight focus:outline-none"
-              id="height"
               type="number"
               placeholder="Height (cm)..."
               value={height}
               onChange={e => setHeight(e.target.value)}
+              className="w-full py-3 pl-5 pr-3 font-sans rounded rounded-l-none font-bold focus:outline-none"
             />
           </div>
         </div>
@@ -57,7 +52,7 @@ const Height = ({
               color: "hsl(0, 0%, 49%)",
               backgroundColor: "hsl(0, 0%, 97%)"
             }}
-            className="appearance-none font-sans font-medium mr-1 block w-full border border-grey-lighter rounded py-2 px-4 leading-tight focus:outline-none"
+            className="w-full py-3 pl-5 pr-3 mr-1 font-sans font-bold rounded focus:outline-none"
             id="height"
             type="number"
             placeholder="Feet..."
@@ -69,7 +64,7 @@ const Height = ({
               color: "hsl(0, 0%, 49%)",
               backgroundColor: "hsl(0, 0%, 97%)"
             }}
-            className="appearance-none font-sans font-medium ml-1 block w-full border border-grey-lighter rounded py-2 px-4 leading-tight focus:outline-none"
+            className="w-full py-3 pl-5 pr-3 ml-1 font-sans font-bold rounded focus:outline-none"
             id="height"
             type="number"
             placeholder="Inches..."

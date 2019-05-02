@@ -12,10 +12,6 @@ const Settings = ({
   unit,
   weightGoal
 }) => {
-  console.log(gender);
-  console.log(unit);
-  console.log(weightGoal);
-
   return (
     <div className="flex flex-wrap px-5 py-2">
       {/* Gender input */}

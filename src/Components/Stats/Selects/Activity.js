@@ -1,4 +1,5 @@
 import React from "react";
+import Tooltip from "react-tooltip-lite";
 
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -9,27 +10,58 @@ library.add(faHiking);
 const Activity = ({ activityLevel, handleActivityLevelChange }) => {
   return (
     <div className="w-full py-2 pl-2">
-      <div
-        style={{ backgroundColor: "hsl(0, 0%, 97%)" }}
-        className="flex w-full text-grey-dark rounded"
-      >
-        <div className="flex py-3 px-4 mt-px">
-          <FontAwesomeIcon
-            style={{ color: "hsl(122, 42%, 75%)" }}
-            icon="hiking"
-          />
-        </div>
-        <div
-          style={{ backgroundColor: "hsl(0, 0%, 88%)" }}
-          className="border"
-        />
+      <div className="flex flex-row">
+        <span
+          style={{ backgroundColor: "hsl(0, 0%, 97%)" }}
+          className="flex items-center rounded rounded-r-none pr-3 pl-5"
+        >
+          <Tooltip
+            distance={12}
+            arrowSize={8}
+            background="hsl(262, 48%, 46%)"
+            color="hsl(0, 0%, 89%)"
+            content={
+              <div>
+                <p style={{ fontWeight: 600 }}>Activity Level</p>
+                <br />
+                <li style={{ listStyleType: "none" }}>
+                  <span style={{ fontWeight: 600 }}>Sedentary:</span> Little or
+                  no exercise, desk job
+                </li>
+                <li style={{ listStyleType: "none" }}>
+                  <span style={{ fontWeight: 600 }}>Light Activity:</span> Light
+                  exercise / sports 1-3 days/week
+                </li>
+                <li style={{ listStyleType: "none" }}>
+                  <span style={{ fontWeight: 600 }}>Moderate Activity:</span>{" "}
+                  Moderate exercise / sports 6-7 days/week
+                </li>
+                <li style={{ listStyleType: "none" }}>
+                  <span style={{ fontWeight: 600 }}>Very Active:</span> Hard
+                  exercise 6-7 days/week
+                </li>
+                <li style={{ listStyleType: "none" }}>
+                  <span style={{ fontWeight: 600 }}>Extremely Active:</span>{" "}
+                  Hard exercise 2x or more per day / training for marathon,
+                  triathlon, etc.
+                </li>
+              </div>
+            }
+          >
+            <FontAwesomeIcon
+              className="cursor-pointer"
+              style={{ color: "hsl(122, 42%, 75%)" }}
+              icon="hiking"
+            />
+          </Tooltip>
+        </span>
         <div className="relative w-full">
           <select
             style={{
               color: "hsl(0, 0%, 49%)",
               backgroundColor: "hsl(0, 0%, 97%)"
             }}
-            className="block font-sans font-medium appearance-none w-full py-3 px-4 pr-8 border-r border-y border-grey-lighter rounded focus:outline-none"
+            className="w-full cursor-pointer appearance-none py-3 pl-5 pr-3 font-sans rounded rounded-l-none font-medium focus:outline-none"
             id="activityLevel"
             value={activityLevel}
             onChange={event => handleActivityLevelChange(event)}

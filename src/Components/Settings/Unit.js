@@ -1,4 +1,5 @@
 import React from "react";
+import Tooltip from "react-tooltip-lite";
 
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -9,29 +10,33 @@ library.add(faBalanceScale);
 const Unit = ({ unit, handleUnitChange }) => {
   return (
     <div className="w-full py-2">
-      <div
-        style={{ backgroundColor: "hsl(0, 0%, 97%)" }}
-        className="flex w-full text-grey-dark rounded"
-      >
-        <div className="flex py-3 px-4 mt-px">
-          <FontAwesomeIcon
-            style={{ color: "hsl(122, 42%, 75%)" }}
-            icon="balance-scale"
-          />
-        </div>
-        <div
-          style={{ backgroundColor: "hsl(0, 0%, 88%)" }}
-          className="border ml-px"
-        />
+      <div className="flex flex-row">
+        <span
+          style={{ backgroundColor: "hsl(0, 0%, 97%)" }}
+          className="flex items-center rounded rounded-r-none -mr-px pr-3 pl-5"
+        >
+          <Tooltip
+            distance={12}
+            arrowSize={8}
+            background="hsl(262, 48%, 46%)"
+            color="hsl(0, 0%, 89%)"
+            content="Measurement System"
+          >
+            <FontAwesomeIcon
+              className="cursor-pointer"
+              style={{ color: "hsl(122, 42%, 75%)" }}
+              icon="balance-scale"
+            />
+          </Tooltip>
+        </span>
         <div className="relative w-full">
           <select
             style={{
               color: "hsl(0, 0%, 49%)",
               backgroundColor: "hsl(0, 0%, 97%)"
             }}
-            className="block font-sans font-medium appearance-none w-full py-3 px-4 pr-8 border-r border-y border-grey-lighter rounded focus:outline-none"
+            className="w-full cursor-pointer appearance-none py-3 pl-5 pr-3 font-sans rounded rounded-l-none font-medium focus:outline-none"
             id="unit"
-            placeholder="test"
             value={unit}
             onChange={event => handleUnitChange(event)}
           >

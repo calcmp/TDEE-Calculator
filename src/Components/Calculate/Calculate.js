@@ -19,10 +19,9 @@ const Calculate = ({
   const [fat, setFat] = useState(null);
 
   useEffect(() => {
-    console.log("use effect");
-    if (formula === "mifflin") calculateBMR();
+    if (formula === false) calculateBMR();
     else calculateLBM();
-  }, [formula]);
+  });
 
   const calculateLBM = () => {
     // Lean Body Mass
@@ -45,8 +44,6 @@ const Calculate = ({
     let tempTDEE = BMR * activityLevel;
     setTDEE(tempTDEE);
 
-    console.log("TDEE: " + tempTDEE);
-
     calculateSurplus(tempTDEE);
   };
 
@@ -61,8 +58,6 @@ const Calculate = ({
       totalCalories = tempTDEE - surplusAmount;
     } else totalCalories = tempTDEE;
     setCalories(totalCalories);
-
-    console.log("TOTAL CAL: " + totalCalories);
 
     calculateMacro(totalCalories);
   };
@@ -112,20 +107,86 @@ const Calculate = ({
       default:
         break;
     }
-
-    let carbs = tempCarbs / 4;
-    let protein = tempProtein / 4;
-    let fat = tempFat / 9;
-
-    setCarbs(carbs);
-    setProtein(protein);
-    setFat(fat);
-
-    console.log("CARBS: " + carbs);
-    console.log("PROTEIN: " + protein);
-    console.log("FAT: " + fat);
+    setCarbs(tempCarbs / 4);
+    setProtein(tempProtein / 4);
+    setFat(tempFat / 9);
   };
 
-  return <div>Calculated</div>;
+  return (
+    <div className="w-full block flex-grow">
+      <div className="px-12 py-5">
+        <div className="flex">
+          <div
+            style={{ color: "hsl(0, 0%, 38%)" }}
+            className="flex-1 py-5 font-sans font-bold text-3xl"
+          >
+            TDEE
+          </div>
+          <div
+            style={{ color: "hsl(122, 39%, 41%)" }}
+            className="flex-1 py-1 pl-6 font-sans font-bold text-5xl"
+          >
+            {Math.round(TDEE)}
+          </div>
+        </div>
+        <div className="flex">
+          <div
+            style={{ color: "hsl(0, 0%, 38%)" }}
+            className="flex-1 py-5 font-sans font-bold text-3xl"
+          >
+            Calories
+          </div>
+          <div
+            style={{ color: "hsl(122, 39%, 41%)" }}
+            className="flex-1 py-1 pl-6 font-sans font-bold text-5xl"
+          >
+            {Math.round(calories)}
+          </div>
+        </div>
+        <div className="flex">
+          <div
+            style={{ color: "hsl(0, 0%, 49%)" }}
+            className="flex-1 py-5 font-sans font-bold text-3xl"
+          >
+            Carbs
+          </div>
+          <div
+            style={{ color: "hsl(123, 35%, 51%)" }}
+            className="flex-1 py-1 pl-6 font-sans font-bold text-5xl"
+          >
+            {Math.round(carbs)}g
+          </div>
+        </div>
+        <div className="flex">
+          <div
+            style={{ color: "hsl(0, 0%, 49%)" }}
+            className="flex-1 py-5 font-sans font-bold text-3xl"
+          >
+            Protein
+          </div>
+          <div
+            style={{ color: "hsl(123, 35%, 51%)" }}
+            className="flex-1 py-1 -ml-1 pl-6 font-sans font-bold text-5xl"
+          >
+            {Math.round(protein)}g
+          </div>
+        </div>
+        <div className="flex">
+          <div
+            style={{ color: "hsl(0, 0%, 49%)" }}
+            className="flex-1 pr-1 py-5 font-sans font-bold text-3xl"
+          >
+            Fat
+          </div>
+          <div
+            style={{ color: "hsl(123, 35%, 51%)" }}
+            className="flex-1 py-1 pl-4 font-sans font-bold text-5xl"
+          >
+            {Math.round(fat)}g
+          </div>
+        </div>
+      </div>
+    </div>
+  );
 };
 export default Calculate;
