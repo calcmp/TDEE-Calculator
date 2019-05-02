@@ -25,7 +25,7 @@ const Height = ({
           <div className="flex flex-row">
             <span
               style={{ backgroundColor: "hsl(0, 0%, 97%)" }}
-              className="flex items-center rounded rounded-r-none pr-3 pl-6"
+              className="flex items-center rounded rounded-r-none pr-1 pl-5"
             >
               <FontAwesomeIcon
                 style={{ color: "hsl(122, 42%, 75%)" }}

@@ -13,7 +13,7 @@ const Diet = ({ macro, handleMacroChange }) => {
       <div className="flex flex-row">
         <span
           style={{ backgroundColor: "hsl(0, 0%, 97%)" }}
-          className="flex items-center rounded rounded-r-none -mr-px pr-3 pl-5"
+          className="flex items-center rounded rounded-r-none -mr-px pl-5"
         >
           <Tooltip
             distance={12}

@@ -12,7 +12,7 @@ const Weight = ({ unit, weight, setWeight }) => {
       <div className="flex flex-row">
         <span
           style={{ backgroundColor: "hsl(0, 0%, 97%)" }}
-          className="flex items-center rounded rounded-r-none pr-2 pl-5"
+          className="flex items-center rounded rounded-r-none pl-4"
         >
           <FontAwesomeIcon
             style={{ color: "hsl(122, 42%, 75%)" }}

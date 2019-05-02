@@ -12,7 +12,7 @@ const Age = ({ age, setAge }) => {
       <div className="flex flex-row">
         <span
           style={{ backgroundColor: "hsl(0, 0%, 97%)" }}
-          className="flex items-center rounded rounded-r-none pr-3 pl-5"
+          className="flex items-center rounded rounded-r-none pl-5"
         >
           <FontAwesomeIcon
             style={{ color: "hsl(122, 42%, 75%)" }}

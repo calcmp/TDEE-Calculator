@@ -13,7 +13,7 @@ const WeightGoal = ({ weightGoal, handleWeightGoalChange }) => {
       <div className="flex flex-row">
         <span
           style={{ backgroundColor: "hsl(0, 0%, 97%)" }}
-          className="flex items-center rounded rounded-r-none ml-px pt-px pr-3 pl-5"
+          className="flex items-center rounded rounded-r-none ml-px pt-px pl-5"
         >
           <Tooltip
             distance={12}

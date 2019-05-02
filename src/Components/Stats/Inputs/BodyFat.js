@@ -12,7 +12,7 @@ const BodyFat = ({ bodyFat, setBodyFat }) => {
       <div className="flex flex-row">
         <span
           style={{ backgroundColor: "hsl(0, 0%, 97%)" }}
-          className="flex items-center rounded rounded-r-none pr-3 pl-4"
+          className="flex items-center rounded rounded-r-none pl-4"
         >
           <FontAwesomeIcon
             style={{ color: "hsl(122, 42%, 75%)" }}

@@ -13,7 +13,7 @@ const Surplus = ({ weightGoal, weightPlan, handleWeightPlanChange }) => {
       <div className="flex flex-row">
         <span
           style={{ backgroundColor: "hsl(0, 0%, 97%)" }}
-          className="flex items-center rounded rounded-r-none pr-3 pl-5"
+          className="flex items-center rounded rounded-r-none pl-5"
         >
           <Tooltip
             distance={12}
