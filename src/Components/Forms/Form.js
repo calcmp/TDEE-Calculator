@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import background from "./images/Gym2.png";
 import "./styling.css";
 
 import Stats from "./Stats";
@@ -63,146 +62,126 @@ const Form = () => {
   };
 
   return (
-    <div style={styles.header}>
-      <div style={styles.content}>
-        <div className="container mx-auto px-6 py-32 md:px-32 lg:px-32 xl:px-32">
-          {/* Header */}
-          <label
-            style={{ color: "hsl(0, 0%, 88%)" }}
-            className="font-display font-sans font-semibold text-5xl text-white mb-4"
-          >
-            TDEE Calculator
-          </label>
+    <div className="container mx-auto px-6 py-32 md:px-32 lg:px-32 xl:px-32">
+      {/* Header */}
+      <label
+        style={{ color: "hsl(0, 0%, 88%)" }}
+        className="font-display font-sans font-semibold text-5xl text-white mb-4"
+      >
+        TDEE Calculator
+      </label>
 
-          {/* Show Form */}
-          {!showResults ? (
-            <div
-              style={{
-                borderTopWidth: 4,
-                borderTopColor: "hsl(122, 47%, 35%)",
-                backgroundColor: "hsl(0, 0%, 88%)"
-              }}
-              className="flex-column mt-3 shadow-md rounded-lg bg-grey opacity-100 h-full"
-            >
-              <div className="w-full block flex-grow px-5 pt-5 pb-2">
-                {/* Formula Options */}
-                <div className="flex radio-toolbar">
-                  <input
-                    id="mifflin"
-                    type="radio"
-                    value="mifflin"
-                    checked={changeFormula === false}
-                    onChange={() => handleFormulaChange()}
-                  />
-                  <label required htmlFor="mifflin">
-                    Mifflin St. Jeor
-                  </label>
-                  <input
-                    id="katch"
-                    type="radio"
-                    value="katch"
-                    checked={changeFormula === true}
-                    onChange={() => handleFormulaChange()}
-                  />
-                  <label required htmlFor="katch">
-                    Katch-McArdle
-                  </label>
-                </div>
-              </div>
-
-              {/* Show settings */}
-              <Settings
-                gender={gender}
-                unit={unit}
-                weightGoal={weightGoal}
-                handleGenderChange={event => handleGenderChange(event)}
-                handleUnitChange={event => handleUnitChange(event)}
-                handleWeightGoalChange={event => handleWeightGoalChange(event)}
+      {/* Show Form */}
+      {!showResults ? (
+        <div
+          style={{
+            borderTopWidth: 4,
+            borderTopColor: "hsl(122, 47%, 35%)",
+            backgroundColor: "hsl(0, 0%, 88%)"
+          }}
+          className="flex-column mt-3 shadow-md rounded-lg bg-grey opacity-100 h-full"
+        >
+          <div className="w-full block flex-grow px-5 pt-5 pb-2">
+            {/* Formula Options */}
+            <div className="flex radio-toolbar">
+              <input
+                id="mifflin"
+                type="radio"
+                value="mifflin"
+                checked={changeFormula === false}
+                onChange={() => handleFormulaChange()}
               />
-
-              {/* Show stats */}
-              <Stats
-                weight={weight}
-                setWeight={setWeight}
-                imperialWeight={imperialWeight}
-                setImperialWeight={setImperialWeight}
-                height={height}
-                setHeight={setHeight}
-                feet={feet}
-                setFeet={setFeet}
-                inches={inches}
-                setInches={setInches}
-                age={age}
-                setAge={setAge}
-                bodyFat={bodyFat}
-                setBodyFat={setBodyFat}
-                weightPlan={weightPlan}
-                setWeightPlan={setWeightPlan}
-                activityLevel={activityLevel}
-                setActivityLevel={setActivityLevel}
-                macro={macro}
-                setMacro={setMacro}
-                showResults={showResults}
-                setShowResults={setShowResults}
-                formula={changeFormula}
-                gender={gender}
-                unit={unit}
-                weightGoal={weightGoal}
+              <label required htmlFor="mifflin">
+                Mifflin St. Jeor
+              </label>
+              <input
+                id="katch"
+                type="radio"
+                value="katch"
+                checked={changeFormula === true}
+                onChange={() => handleFormulaChange()}
               />
+              <label required htmlFor="katch">
+                Katch-McArdle
+              </label>
             </div>
-          ) : (
-            <div
-              style={{
-                borderTopWidth: 4,
-                borderTopColor: "hsl(122, 47%, 35%)",
-                backgroundColor: "hsl(0, 0%, 88%)"
-              }}
-              className="flex-column mt-3 shadow-md rounded-lg bg-grey opacity-100 h-full"
-            >
-              {/* Calculate and show results */}
-              <Calculate
-                formula={changeFormula}
-                gender={gender}
-                weight={imperialWeight || weight}
-                height={height}
-                age={age}
-                bodyFat={bodyFat}
-                activityLevel={activityLevel}
-                weightGoal={weightGoal}
-                weightPlan={weightPlan}
-                macro={macro}
-              />
-              <Button
-                style={{
-                  color: "hsl(0, 0%, 92%)",
-                  backgroundColor: "hsl(122, 39%, 41%)"
-                }}
-                className="w-full font-sans font-medium py-5 px-2 rounded-b-lg focus:outline-none"
-                handleClick={() => handleClick()}
-                title={"Back"}
-              />
-            </div>
-          )}
+          </div>
+
+          {/* Show settings */}
+          <Settings
+            gender={gender}
+            unit={unit}
+            weightGoal={weightGoal}
+            handleGenderChange={event => handleGenderChange(event)}
+            handleUnitChange={event => handleUnitChange(event)}
+            handleWeightGoalChange={event => handleWeightGoalChange(event)}
+          />
+
+          {/* Show stats */}
+          <Stats
+            weight={weight}
+            setWeight={setWeight}
+            imperialWeight={imperialWeight}
+            setImperialWeight={setImperialWeight}
+            height={height}
+            setHeight={setHeight}
+            feet={feet}
+            setFeet={setFeet}
+            inches={inches}
+            setInches={setInches}
+            age={age}
+            setAge={setAge}
+            bodyFat={bodyFat}
+            setBodyFat={setBodyFat}
+            weightPlan={weightPlan}
+            setWeightPlan={setWeightPlan}
+            activityLevel={activityLevel}
+            setActivityLevel={setActivityLevel}
+            macro={macro}
+            setMacro={setMacro}
+            showResults={showResults}
+            setShowResults={setShowResults}
+            formula={changeFormula}
+            gender={gender}
+            unit={unit}
+            weightGoal={weightGoal}
+          />
         </div>
-      </div>
+      ) : (
+        <div
+          style={{
+            borderTopWidth: 4,
+            borderTopColor: "hsl(122, 47%, 35%)",
+            backgroundColor: "hsl(0, 0%, 88%)"
+          }}
+          className="flex-column mt-3 shadow-md rounded-lg bg-grey opacity-100 h-full"
+        >
+          {/* Calculate and show results */}
+          <Calculate
+            formula={changeFormula}
+            gender={gender}
+            weight={imperialWeight || weight}
+            height={height}
+            age={age}
+            bodyFat={bodyFat}
+            activityLevel={activityLevel}
+            weightGoal={weightGoal}
+            weightPlan={weightPlan}
+            macro={macro}
+          />
+          <Button
+            style={{
+              color: "hsl(0, 0%, 92%)",
+              backgroundColor: "hsl(122, 39%, 41%)"
+            }}
+            className="w-full font-sans font-medium py-5 px-2 rounded-b-lg focus:outline-none"
+            handleClick={() => handleClick()}
+            title={"Back"}
+          />
+        </div>
+      )}
     </div>
   );
-};
-
-const styles = {
-  header: {
-    backgroundImage: `url(${background})`,
-    height: "100vh",
-    backgroundPosition: "center",
-    backgroundRepeat: "no-repeat",
-    backgroundSize: "cover"
-  },
-
-  content: {
-    height: "100%",
-    width: "100%",
-    backgroundColor: "rgba(0, 0, 0, 0.5)"
-  }
 };
 
 export default Form;
