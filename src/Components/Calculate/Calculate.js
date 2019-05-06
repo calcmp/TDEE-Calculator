@@ -1,17 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-const Calculate = ({
-  formula,
-  gender,
-  age,
-  weight,
-  height,
-  bodyFat,
-  activityLevel,
-  weightGoal,
-  weightPlan,
-  macro
-}) => {
+const Calculate = props => {
   const [TDEE, setTDEE] = useState(null);
   const [calories, setCalories] = useState(null);
   const [carbs, setCarbs] = useState(null);
@@ -19,13 +8,13 @@ const Calculate = ({
   const [fat, setFat] = useState(null);
 
   useEffect(() => {
-    if (formula === false) calculateBMR();
+    if (props.formula === false) calculateBMR();
     else calculateLBM();
   });
 
   const calculateLBM = () => {
     // Lean Body Mass
-    let LBM = (weight * (100 - bodyFat)) / 100;
+    let LBM = (props.weight * (100 - props.bodyFat)) / 100;
     // Basal Metabolic Rate
     let BMR = 370 + 21.6 * LBM;
 
@@ -34,14 +23,16 @@ const Calculate = ({
 
   const calculateBMR = () => {
     let BMR;
-    if (gender === "male") BMR = 9.99 * weight + 6.25 * height - 4.92 * age + 5;
-    else BMR = 9.99 * weight + 6.25 * height - 4.92 * age - 161;
+    if (props.gender === "male")
+      BMR = 9.99 * props.weight + 6.25 * props.height - 4.92 * props.age + 5;
+    else
+      BMR = 9.99 * props.weight + 6.25 * props.height - 4.92 * props.age - 161;
 
     calculateTDEE(BMR);
   };
 
   const calculateTDEE = BMR => {
-    let tempTDEE = BMR * activityLevel;
+    let tempTDEE = BMR * props.activityLevel;
     setTDEE(tempTDEE);
 
     calculateSurplus(tempTDEE);
@@ -50,11 +41,11 @@ const Calculate = ({
   const calculateSurplus = tempTDEE => {
     let surplusAmount;
     let totalCalories;
-    if (weightGoal === "gain") {
-      surplusAmount = tempTDEE * weightPlan;
+    if (props.weightGoal === "gain") {
+      surplusAmount = tempTDEE * props.weightPlan;
       totalCalories = surplusAmount + tempTDEE;
-    } else if (weightGoal === "lose") {
-      surplusAmount = tempTDEE * weightPlan;
+    } else if (props.weightGoal === "lose") {
+      surplusAmount = tempTDEE * props.weightPlan;
       totalCalories = tempTDEE - surplusAmount;
     } else totalCalories = tempTDEE;
     setCalories(totalCalories);
@@ -67,7 +58,7 @@ const Calculate = ({
     let tempProtein;
     let tempFat;
 
-    switch (macro) {
+    switch (props.macro) {
       // Keto
       case "1":
         tempCarbs = totalCalories * 0.05;

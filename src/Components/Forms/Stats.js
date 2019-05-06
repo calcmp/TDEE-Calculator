@@ -9,108 +9,101 @@ import Activity from "../Stats/Selects/Activity";
 import Diet from "../Stats/Selects/Diet";
 import Button from "../Button/Button";
 
-const Stats = ({
-  weight,
-  setWeight,
-  setImperialWeight,
-  height,
-  setHeight,
-  inches,
-  setInches,
-  feet,
-  setFeet,
-  age,
-  setAge,
-  bodyFat,
-  setBodyFat,
-  weightPlan,
-  setWeightPlan,
-  activityLevel,
-  setActivityLevel,
-  macro,
-  setMacro,
-  setShowResults,
-  formula,
-  unit,
-  weightGoal
-}) => {
+const Stats = props => {
   const handleActivityLevelChange = event => {
-    setActivityLevel(event.target.value);
+    props.setActivityLevel(event.target.value);
   };
 
   const handleWeightPlanChange = event => {
-    setWeightPlan(event.target.value);
+    props.setWeightPlan(event.target.value);
   };
 
   const handleMacroChange = event => {
-    setMacro(event.target.value);
+    props.setMacro(event.target.value);
   };
 
   const handleClick = () => {
     // Convert imperial to metric
-    if (unit === "imperial") {
-      let tempWeight = weight * 0.45359237001;
-      setImperialWeight(tempWeight);
+    if (props.unit === "imperial") {
+      let tempWeight = props.weight * 0.45359237001;
+      props.setImperialWeight(tempWeight);
 
-      let tempHeight = feet * 12;
-      tempHeight += +inches;
+      let tempHeight = props.feet * 12;
+      tempHeight += +props.inches;
       tempHeight *= 2.54;
-      setHeight(tempHeight);
+      props.setHeight(tempHeight);
     }
     // Check if stats have been entered
-    if (formula === false && weight !== "" && height !== "" && age !== "")
-      setShowResults(true);
-    else if (formula === true && weight !== "" && bodyFat !== "")
-      setShowResults(true);
+    if (
+      props.formula === false &&
+      props.weight !== "" &&
+      props.height !== "" &&
+      props.age !== ""
+    )
+      props.setShowResults(true);
+    else if (
+      props.formula === true &&
+      props.weight !== "" &&
+      props.bodyFat !== ""
+    )
+      props.setShowResults(true);
     else alert("Please enter your weight, height and age.");
   };
 
   return (
     <div>
       <div className="flex py-2 px-5">
-        {!formula ? (
+        {!props.formula ? (
           <div className="flex-col flex-1">
             {/* -----Mifflin Formula----- */}
 
             {/* Weight input */}
-            <Weight unit={unit} weight={weight} setWeight={setWeight} />
+            <Weight
+              unit={props.unit}
+              weight={props.weight}
+              setWeight={props.setWeight}
+            />
 
             {/* Height input */}
             <Height
-              unit={unit}
-              height={height}
-              setHeight={setHeight}
-              inches={inches}
-              setInches={setInches}
-              feet={feet}
-              setFeet={setFeet}
+              unit={props.unit}
+              height={props.height}
+              setHeight={props.setHeight}
+              inches={props.inches}
+              setInches={props.setInches}
+              feet={props.feet}
+              setFeet={props.setFeet}
             />
 
             {/* Age input */}
-            <Age age={age} setAge={setAge} />
+            <Age age={props.age} setAge={props.setAge} />
           </div>
         ) : (
           <div className="flex-col flex-1">
             {/* -----Katch Formula----- */}
 
             {/* Weight input */}
-            <Weight unit={unit} weight={weight} setWeight={setWeight} />
+            <Weight
+              unit={props.unit}
+              weight={props.weight}
+              setWeight={props.setWeight}
+            />
 
             {/* Body fat input */}
-            <BodyFat bodyFat={bodyFat} setBodyFat={setBodyFat} />
+            <BodyFat bodyFat={props.bodyFat} setBodyFat={props.setBodyFat} />
           </div>
         )}
         <div className="flex-col flex-1">
           {/* Surplus input */}
           <Surplus
-            weightGoal={weightGoal}
-            weightPlan={weightPlan}
+            weightGoal={props.weightGoal}
+            weightPlan={props.weightPlan}
             handleWeightPlanChange={event => handleWeightPlanChange(event)}
           />
 
           {/* Activity input */}
           <Activity
-            activityLevel={activityLevel}
+            activityLevel={props.activityLevel}
             handleActivityLevelChange={event =>
               handleActivityLevelChange(event)
             }
@@ -118,7 +111,7 @@ const Stats = ({
 
           {/* Diet input */}
           <Diet
-            macro={macro}
+            macro={props.macro}
             handleMacroChange={event => handleMacroChange(event)}
           />
         </div>
