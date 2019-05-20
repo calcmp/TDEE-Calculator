@@ -32,22 +32,47 @@ const Stats = props => {
       tempHeight += +props.inches;
       tempHeight *= 2.54;
       props.setHeight(tempHeight);
+
+      // Check if stats have been entered
+      if (
+        props.formula === false &&
+        props.weight !== "" &&
+        props.feet !== "" &&
+        props.inches !== "" &&
+        props.age !== ""
+      ) {
+        props.setShowResults(true);
+      } else if (
+        props.formula === true &&
+        props.weight !== "" &&
+        props.bodyFat !== ""
+      ) {
+        props.setShowResults(true);
+      } else
+        alert(
+          "Please enter your weight, height and age or your weight and body fat %."
+        );
     }
     // Check if stats have been entered
-    if (
-      props.formula === false &&
-      props.weight !== "" &&
-      props.height !== "" &&
-      props.age !== ""
-    )
-      props.setShowResults(true);
-    else if (
-      props.formula === true &&
-      props.weight !== "" &&
-      props.bodyFat !== ""
-    )
-      props.setShowResults(true);
-    else alert("Please enter your weight, height and age.");
+    if (props.unit === "metric") {
+      if (
+        props.formula === false &&
+        props.weight !== "" &&
+        props.height !== "" &&
+        props.age !== ""
+      ) {
+        props.setShowResults(true);
+      } else if (
+        props.formula === true &&
+        props.weight !== "" &&
+        props.bodyFat !== ""
+      ) {
+        props.setShowResults(true);
+      } else
+        alert(
+          "Please enter your weight, height and age or your weight and body fat %."
+        );
+    }
   };
 
   return (
